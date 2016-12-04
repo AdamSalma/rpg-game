@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"> 
+	<title>Adam's Game</title>
+
+	<link rel="stylesheet" type="text/css" href="loading.css">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	
+	<link rel="stylesheet" type="text/css" href="customAni.css">
+
+	<script type="text/javascript" src="libraries/jQueryPlus.js"></script>
+	<script type="text/javascript" src="libraries/jQueryUI.js"></script>
+	<link rel="stylesheet" type="text/css" href="libraries/jKit.css">
+
+	<script type="text/javascript" src="scripts/cookies.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="libraries/jquery-ui.min.css">
+	<link rel="stylesheet" type="text/css" href="libraries/jquery-ui.structure.min.css">
+	<link rel="stylesheet" type="text/css" href="libraries/jquery-ui.theme.min.css">
+</head>
+<body lang="en">
+<div id="bodyWrap"> <!-- class="cursorImg" -->
+	<span id="menuBar">
+		<div class="context">
+			<input type="button" id="button1" value="Skip Intro">
+
+			<input type="button" id="button3" value="Add Equipment">
+			<input type="button" id="button8" value="Start a Battle">
+
+			<input type="button" id="button2" value="Open Shop">
+			<input type="button" id="button5" value="Add Money">
+
+			<input type="button" id="button4" value="Add Items">
+			<input type="button" id="button11" value="Add Health">
+
+			<input type="button" id="button6" value="Reload">
+
+			<input type="button" id="button7" value="Monsters = On">
+			<input type="button" id="button9" value="Quit">
+			<input type="button" id="button10" value="Del localStorage">
+		</div>
+		<span id="menubottom"></span>
+	</span>
+	<div id="loading">
+	    <div id="fountainTextG_1" class="fountainTextG">L</div><div id="fountainTextG_2" class="fountainTextG">o</div>
+	    <div id="fountainTextG_3" class="fountainTextG">a</div><div id="fountainTextG_4" class="fountainTextG">d</div>
+	    <div id="fountainTextG_5" class="fountainTextG">i</div><div id="fountainTextG_6" class="fountainTextG">n</div>
+	    <div id="fountainTextG_7" class="fountainTextG">g</div><div id="fountainTextG_8" class="fountainTextG">.</div>
+	    <div id="fountainTextG_9" class="fountainTextG">.</div><div id="fountainTextG_10" class="fountainTextG">.</div>
+	</div>
+
+	<div id="backgrounds">
+		<div class="day"></div>
+		<div class="sunset"></div>
+		<div class="sunrise"></div>
+		<div class="night"></div>
+	</div>
+
+
+	<div id="cloudsWrap" class="disSel">
+		<div id="cloud1" class="cloud"><img src="img/other/cloud.png" id="cloud1_1"></div>
+		<div id="cloud2" class="cloud"><img src="img/other/cloud2.png" id="cloud2_2"></div>
+		<div id="cloud3" class="cloud"><img src="img/other/cloud3.png" id="cloud3_3"></div>
+		<div id="cloud4" class="cloud"><img src="img/other/cloud3.png" id="cloud4_4"></div>
+		<div id="cloud5" class="cloud"><img src="img/other/cloud5.png" id="cloud5_5"></div>
+	</div>
+	<div id="sleep"></div>
+	<div id="gameWrap"></div>
+	<div id="game" class="disSel">
+
+<!--:::::::::::-->
+<!--Main Window-->
+<!--:::::::::::-->
+
+		<div id="mainWindow">
+
+	<!--Home Page-->
+			<div id="home">
+				<div class="clickables">	
+					<div id="toIndexH" class="box navBox">Exit Home</div>
+					<div id="resetHealth" class="box">Heal</div>
+					<div id="goToSleep" class="box">Sleep</div>
+					<div id="craft" class="box">Craft</div>
+					<div id="storeItems" class="box">Storage</div>
+					<div id="options" class="box">Options</div>
+				</div>
+				<div class="imgs">	
+					<img src="img/icons/hp1.png" id="resetHealthImg1">
+					<img src="img/icons/hp2.png" id="resetHealthImg2">
+					<img src="img/icons/bed.png" id="goToSleepImg">
+					<img src="img/icons/chest.png" id="storeItemsImg">
+					<img src="img/icons/craft.png" id="craftImg">
+					<img src="img/icons/options.png" id="optionsImg">
+				</div>
+			</div>
+	<!--Index Pages-->
+			<div id="index" class="pageWrap">
+				<div id="toHome" class="box navBox">Home</div>
+				<div id="toIndex2" class="box navBox arrowNav">&#8659;</div>
+				<img src="img/icons/home.png" id="homeImg">
+				<img src="img/paths/home1.png" id="pathHome">
+				<!-- clickables -->
+				<img src="img/mapObj/bushes/bush1.png" class="mapObj" id="b1">
+				<img src="img/mapObj/shrubs/shrub3.png" class="mapObj" id="s1">
+				<img src="img/mapObj/shrubs/shrub1.png" class="mapObj" id="s2">
+				<img src="img/mapObj/bushes/bush2.png" class="mapObj" id="b2">
+			</div>
+			<div id="index2" class="pageWrap">
+				<div id="toHomeI" class="box navBox arrowNav">&#8657;</div>
+				<div id="toIntersection" class="box navBox arrowNav">&#8659;</div>
+				<img src="img/paths/home2.png" id="pathHome2">
+				<img src="img/icons/home.png" id="homeImg2">
+				<!-- clickables -->
+				<img src="img/mapObj/trees/tree1.png" class="mapObj" id="t1">
+				<img src="img/mapObj/trees/tree2.png" class="mapObj" id="t2">
+				<img src="img/mapObj/bushes/bush6.png" class="mapObj" id="b3">
+				<img src="img/mapObj/bushes/bush4.png" class="mapObj" id="b4">
+			</div>
+			<div id="intersection" class="pageWrap">
+				<div id="toHomeInt" class="box navBox arrowNav">&#8657;</div>
+				<div id="toVillageInt" class="box navBox arrowNav">&#8665;</div>
+				<div id="toRuinsInt" class="box navBox arrowNav">&#8664;</div>
+				<img src="img/paths/intersection1.png" id="intersectionImg1">
+				<img src="img/paths/sign1.png" id="sign1">
+				<!-- clickables -->
+				<img src="img/mapObj/trees/tree2.png" class="mapObj" id="t5">
+				<img src="img/mapObj/trees/tree4.png" class="mapObj" id="t6">
+				<img src="img/mapObj/trees/tree5.png" class="mapObj" id="t7">
+				<img src="img/mapObj/trees/tree8.png" class="mapObj" id="t8">
+				<img src="img/mapObj/bushes/bush8.png" class="mapObj" id="b5">
+				<img src="img/mapObj/bushes/bush2.png" class="mapObj" id="b6">
+			</div>
+
+
+	<!--Village Pages-->
+			<div id="preVillage1" class="pageWrap">
+				<div id="toIntersectionV" class="box navBox arrowNav">&#8658;</div>
+				<div id="toVillageI" class="box navBox arrowNav">&#8656;</div>
+				<img src="img/paths/preVillage1.png" id="preVillageImg">
+				<!-- clickables -->
+				<img src="img/mapObj/rocks/rock1.png" class="mapObj" id="r1">
+				<img src="img/mapObj/shrubs/shrub8.png" class="mapObj" id="s3">
+				<img src="img/mapObj/trees/tree2.png" class="mapObj" id="t9">
+			</div>
+			<div id="villageGates" class="pageWrap">
+				<div id="toPreVillage1" class="box navBox arrowNav">&#8658;</div>
+				<div id="toVillageG" class="box navBox">Village</div>
+
+				<img src="img/icons/villageGates.png" id="villageGatesImg">
+				<!-- clickables -->
+				<img src="img/mapObj/trees/tree1.png" class="mapObj" id="t10">
+				<img src="img/mapObj/trees/tree4.png" class="mapObj" id="t11">
+				<img src="img/mapObj/trees/tree5.png" class="mapObj" id="t12">
+				<img src="img/mapObj/trees/tree7.png" class="mapObj" id="t13">
+			</div>
+
+			<div id="village" class="pageWrap">
+				<div id="shop" class="box">Shop</div>
+				<div id="trainingGrounds" class="box">Training Grounds</div>
+				<div id="quests" class="box">Quests</div>
+				<div id="toIndexV" class="box navBox">Leave Village</div>
+			</div>
+			<div id="shopPage" class="pageWrap">
+				<div id="innerShop1" class="box">Equipment</div>
+				<div id="innerShop2" class="box">Items</div>
+				<div id="toVillageS" class="box">Exit Shop</div>
+			</div>
+			<div id="trainingGroundsPage" class="pageWrap">
+				<div id="trainStats" class="box">Train Stats</div>
+				<div id="toVillageT" class="box">Back to Village</div>
+			</div>
+
+
+	<!--Adventure Pages-->
+		<!-- Ruins -->
+			<div id="preRuins1" class="pageWrap">
+				<div id="toIntersectionR" class="box navBox arrowNav">&#8658;</div>
+				<div id="toRuins2" class="box navBox arrowNav">&#8656;</div>
+				<!-- clickables -->
+				<img src="img/mapObj/bushes/bush2.png" class="mapObj" id="b7">
+				<img src="img/mapObj/bushes/bush3.png" class="mapObj" id="b8">
+				<img src="img/mapObj/bushes/bush5.png" class="mapObj" id="b9">
+				<img src="img/mapObj/shrubs/shrub3.png" class="mapObj" id="s4">
+				<img src="img/mapObj/rocks/rock3.png" class="mapObj" id="r2">
+
+			</div>
+				<div id="preRuins2" class="pageWrap">
+					<div id="toRuins2R" class="box navBox arrowNav">&#8658;</div>
+					<div id="toRuins" class="box navBox arrowNav">&#8656;</div>
+					<!-- clickables -->
+					<img src="img/mapObj/bushes/bush2.png" class="mapObj" id="b7">
+					<img src="img/mapObj/bushes/bush3.png" class="mapObj" id="b8">
+					<img src="img/mapObj/bushes/bush5.png" class="mapObj" id="b9">
+					<img src="img/mapObj/shrubs/shrub3.png" class="mapObj" id="s4">
+					<img src="img/mapObj/rocks/rock3.png" class="mapObj" id="r2">
+					<img src="img/icons/villageGates.png" id="villageGatesImg">
+				</div>
+					<div id="ruins" class="pageWrap">
+					
+					</div>
+
+
+
+
+
+
+			<div id="adventure" class="pageWrap">
+				<div id="toMountains" class="box navBox">Mountains</div>
+				<div id="toLake" class="box navBox">Lake</div>
+				<div id="toForest" class="box navBox">Forest</div>
+				<div id="toCaves" class="box navBox">Caves</div>
+				<div id="toIndexA" class="box navBox">Back</div>
+				<img src="img/paths/path1.png" id="path1">
+			</div>
+			<div id="caves" class="pageWrap">
+				<img src="img/mapObj/rockSix.png" id="rockOne" class="specialBox rock">
+				<img src="img/mapObj/trees/tree1.png" id="t1" class="specialBox tree">
+				<img src="img/mapObj/trees/tree2.png" id="t2" class="specialBox tree">
+				<img src="img/paths/path2.png" id="path2">
+				<div id="toCaves2" class="box navBox">Continue to Cave</div>
+				<div id="toAdventureC" class="box navBox">Back</div>
+			</div>
+				<!--cave 2-->
+				<div id="caves2">
+					<img src="img/mapObj/rockTwo.png" id="rockTwo" class="specialBox rock">
+					<img src="img/mapObj/trees/tree2.png" id="t3" class="specialBox tree">
+					<img src="img/mapObj/rockThree.png" id="rockThree" class="specialBox rock">
+					<img src="img/paths/path2Inv.png" id="path2Inv">
+					<div id="toCaves3" class="box navBox">Continue to Cave</div>
+					<div id="caves2Back" class="box navBox">Back</div>
+				</div>
+					<!--cave 3-->
+					<div id="caves3">
+						<img src="img/paths/path3.png" id="path3">
+						<img src="img/mapObj/rockOne.png" id="rockFour" class="specialBox rock">
+						<img src="img/mapObj/rockFour.png" id="rockFive" class="specialBox rock">
+						<img src="img/mapObj/rockFive.png" id="rockSix" class="specialBox rock">
+						<img src="img/mapObj/caveEntrance.png" id="caveEntrance">
+						<div id="enterCaves" class="box navBox">Enter...</div>
+						<div id="caves3Back" class="box navBox">Back</div>
+						<img src="img/mapObj/trees/tree3.png" id="t4" class="specialBox tree">
+					</div>
+
+
+						<!-- CAVES BEGIN -->
+
+						<div id="innerCaves1">
+							<div id="backToCaveEntrance" class="box navBox">Back</div>
+							<img src="img/mapObj/Citrine/crystal1.png" id="c1_1" class="specialBox crystal">
+							<img src="img/mapObj/Tanzanite/crystal3.png" id="c1_2" class="specialBox crystal">
+							<div id="toCaveScreen2" class="box navBox">Continue</div>
+						</div>
+						<div id="innerCaves2">
+							<img src="img/mapObj/Citrine/crystal2.png" id="c2_1" class="specialBox crystal">
+							<img src="img/mapObj/Iolite/crystal3.png" id="c2_2" class="specialBox crystal">
+							<div id="backToCaveScreen1" class="box navBox">Back</div>
+							<div id="toCaveScreen3" class="box navBox">Continue</div>
+						</div>
+						<div id="innerCaves3">
+							<img src="img/mapObj/Beryl/crystal1.png" id="c3_1" class="specialBox crystal">
+							<img src="img/mapObj/Iolite/crystal1.png" id="c3_2" class="specialBox crystal">
+							<img src="img/mapObj/Iolite/crystal4.png" id="c3_3" class="specialBox crystal">
+							<div id="backToCaveScreen2" class="box navBox">Back</div>
+							<div id="toCaveScreen4" class="box navBox">Continue</div>
+						</div>
+						<div id="innerCaves4">
+							<div id="backToCaveScreen3" class="box navBox">Back</div>
+							<div id="toCaveScreen5" class="box navBox">Continue</div>
+						</div>
+						<div id="innerCaves5">
+							<div id="backToCaveScreen4" class="box navBox">Back</div>
+							<div id="toCaveScreen6" class="box navBox">Continue</div>
+						</div>
+						<div id="innerCaves6">
+							<div id="backToCaveScreen5" class="box navBox">Back</div>
+						</div>
+
+						
+						<!-- CAVES END -->
+			<div id="forest">
+
+				<div id="toAdventureF" class="box navBox">Back</div>
+			</div>
+
+<!--:::::::::::::::::-->
+<!--InnerScreen Pages-->
+<!--:::::::::::::::::-->
+
+		<!-- bar at top... 10/10 annotation skills -->
+			<div id="topBar">
+				<span id="menuButton">
+					<img src="img/topBar/menuButton.png">
+				</span>
+				<div class="quests">
+					<span class="text">Quests</span>
+					<span class="text2">No Quests</span>
+					<div class="theRest">
+						<ul id="questSlots">
+							<li>&nbsp;</li>
+							<li>TEST</li>
+							<li>TEST</li>
+							<li>TEST</li>
+							<li>TEST</li>
+						</ul>
+					</div>
+				</div>
+				<div id="xp" class="hoverText">
+					<span class="text">XP</span>
+					<div id="xpBar">
+						<div id="xpPercent"></div>
+						<div id="xpContent"></div>
+					</div>
+					<div class="levelWrap">
+						<span id="levelContent">
+							<!-- Your level -->
+						</span>
+					</div>
+					<div id="xpChange"></div>
+				</div>
+				<div class="currency">
+					<div class="money">
+						<span class="img">
+							<img src="img/topBar/Dirak.png">
+						</span>
+						<span class="text" id="dirak">
+							100
+						</span>
+						<div id="dirakContent"></div>
+					</div>
+					<div class="spiritEssence">
+						<span class="img">
+							<img src="img/topBar/spiritEssenceSmall.png">
+						</span>
+						<span class="text" id="essence">
+							100
+						</span>
+						<div id="essenceContent"></div>
+					</div>
+				</div>
+				<span id="toggle">
+					<img id="moneyArrowImg" src="img/topBar/arrow_down.png">
+				</span>
+			</div>
+
+		<!-- CRADRT AND SROEAFW BEGIN -->
+		<!-- lol good times -->
+
+			<!-- cradt -->
+
+			<div id="toStorageC">
+				<img src="img/other/storage.png" id="craftTextImg">
+				<img src="img/other/arrow_right.png" id="storageTextArrow">
+			</div>
+			<div id="craftPage">
+				<span id="closeSC" class="closeSC">Close</span>
+				<div class="tabs">
+					<span class="tabOne">Alchemy Lab</span>
+					<span class="tabTwo">Forge</span>
+				</div>
+		<!-- BOX -->
+				<div class="content">
+
+					<div class="forge">
+						<fieldset id="furnace">
+							<legend>
+								Furnace
+							</legend>
+							<div class="inner">
+								<span class="input">
+									<img class="warn hoverText" id="inputWarn" src="img/other/warning.png">
+									<span class="in hoverOver" id="furnaceInput"></span>
+								</span>
+								<span class="fuel">
+									<span id="furnaceFuel" class="hoverOver"></span>
+										<span class="barOuter">
+											<span class="barInner"></span>						
+										</span>
+									<img class="warn hoverText" id="fuelWarn" src="img/other/warning.png">
+								</span>
+								<span id="progress">
+									<div class="arrow">
+										<img class="trail" src="img/other/arrow_trail.png">
+										<img class="tip" src="img/other/arrow_tip.png">
+									</div>
+									<span class="percent">
+										<span>
+											<!-- percent goes here -->
+										</span>
+									</span>
+									
+								</span>
+								<span class="out"></span>
+							</div>
+						</fieldset>
+							
+						<fieldset id="smithy">
+							<legend>Smithy</legend>
+							<div class="blueprint">
+								Choose BluePrint								
+							</div>
+							<div class="item smithyBox">
+								<table>
+									<thead>
+										<tr>
+											<th>Choose an item</th>
+										</tr>
+									</thead>
+									<tbody id="smithyItem">
+										<!-- Dynamically entered data here -->
+									</tbody>
+								</table>	
+
+							</div>
+							<div class="type smithyBox">
+								<table>
+									<thead>
+										<tr>
+											<th>Choose Its type</th>
+										</tr>
+									</thead>
+									<tbody id="smithyType">
+										<!-- Dynamically entered data here -->
+									</tbody>
+								</table>
+							</div>
+						</fieldset>	
+						
+					</div>
+
+					<div class="alchemy">
+						
+							<div id="tc">
+								<span class="tcInner"></span>
+
+								<span class="input1"></span>
+								<span class="input2"></span>
+								<span class="input3"></span>
+							</div>
+						
+					</div>
+
+				</div>
+			</div>
+
+
+		<!-- storage -->
+			<!-- sidebox -->
+			<div id="toCraftS">
+				<img src="img/other/craft.png" id="craftTextImg">
+				<img src="img/other/arrow_left.png" id="craftTextArrow">
+			</div>
+			<div id="storagePage">
+				<span>Storage</span>
+				<div class="tableWrap">
+					<table>
+						<thead>
+							<input type="radio" value="Some shit">
+							<input type="radio" value="Some shit">
+							<input type="radio" value="Some shit">
+						</thead>
+						<tbody id="storageTable">
+							<!-- Rows get inserted here dynamically -->
+						</tbody>
+					</table>
+				</div>
+				<div class="footer">
+					<div class="closeSC">Close</div>
+		<!-- BOX -->
+					<div id="dragContainerWrap">
+						<span class="text">Drag over here!</span>
+						<div id="dragContainer">				
+							<table>
+								<tbody>
+									<tr class="_1">
+										<td class="_1"></td>
+										<td class="_2"></td>
+										<td class="_3"></td>
+									</tr>
+									<tr class="_2">
+										<td class="_1"></td>
+										<td class="_2"></td>
+										<td class="_3"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					
+				</div>
+				<div class="sideBar">
+					<div id="storageImgWrap">
+						<!--  a bigger image of the what the user clicked on in the table -->
+						<img src="img/other/error.png" id="storageImg">
+					</div>
+					<div id="storageTextWrap">
+						<div id="storageText">
+							<!-- javascript content goes here -->
+						</div>
+					</div>
+					
+				</div>
+			</div>			
+
+
+
+			<div id="innerScreenPages">
+				<div id="innerScreenBackground"></div>
+
+			<div id="">
+				
+			</div>
+
+
+
+
+	<!--Battle Page-->
+			<div id="monsterFightPage">
+				<div id="monsterFightPageInner">
+					
+				<!-- One -->
+					<div id="monster1">
+						<div class="monsterName">
+							<!-- Monster Name here --> Crystal Arachnoid
+						</div>
+						<span>
+							<img src="">
+						</span>
+						<div class="health">
+							<span> 
+								<div class="percent">100%</div>
+								<div class="barOuter">
+									<div class="barInner"></div>
+								</div>
+								<div class="float">
+									<!-- Animated Number -->
+								</div>
+							</span>
+						</div>
+						<div class="arrow bounceArrow">
+							<img src="img/other/monsterPick.png">
+						</div>
+					</div>
+
+					<!-- Two -->
+					<div id="monster2">
+						<div class="monsterName">
+							<!-- Monster Name here --> Crystal Arachnoid
+						</div>
+						<span>
+							<img src="">
+						</span>
+						<div class="health">
+							<span> 
+								<div class="percent">100%</div>
+								<div class="barOuter">
+									<div class="barInner"></div>
+								</div>
+								<div class="float">
+									<!-- Animated Number -->
+								</div>
+							</span>
+						</div>
+						<div class="arrow">
+							<img src="img/other/monsterPick.png">
+						</div>
+					</div>
+
+					<!-- Three -->
+					<div id="monster3">
+						<div class="monsterName">
+							<!-- Monster Name here --> Crystal Arachnoid
+						</div>
+						<span>
+							<img src="">
+						</span>
+						<div class="health">
+							<span> 
+								<div class="percent">100%</div>
+								<div class="barOuter">
+									<div class="barInner"></div>
+								</div>
+								<div class="float">
+									<!-- Animated Number -->
+								</div>
+							</span>
+						</div>
+						<div class="arrow">
+							<img src="img/other/monsterPick.png">
+						</div>
+					</div>
+
+					<!-- Damage Boxes -->
+					<div id="damageZone">
+						<!-- boxes fly about in here -->
+					</div>
+				</div>
+			</div>
+
+	<!-- Fightbox V2.0 -->
+		<div id="fightMode">
+			<div class="bar">
+				<div id="battleLeft"></div>
+				<div id="battleRight"></div>
+			</div>
+			<div class="content">
+
+
+				<div id="battlePotions">
+					<span class="health">
+						<div>
+							<span class="text">
+								Health	
+							</span>
+							<span class="numberOf">
+								0
+							</span>
+						</div>
+						<img class="imgAlt" src="img/products/healthPotion.png">
+					</span>
+					<span class="mana">
+						<div>
+							<span class="text">
+								Mana
+							</span>
+							<span class="numberOf">
+								0
+							</span>
+						</div>
+						<img class="imgAlt" src="img/products/manaPotion.png">
+						
+					</span>
+				</div>
+
+				<!-- special skills 1 -->
+				<table class="table1">
+					<tbody>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+
+				<!-- big attack button -->
+				<span class="attack">
+					<span class="one">Attack!</span>
+					<div id="attackType">
+						<span id="Physical">Physical</span>
+						<span id="Magic">Magic</span>
+					</div>
+				</span>
+
+
+				<!-- special skills 2 -->
+				<table class="table2">
+					<tbody>
+						<tr>						
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+
+
+				<span id="runFromBattle">
+					<span class="four">
+						Escape!
+					</span>
+				</span>
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+
+
+	<!-- Shop Page -->
+			<div id="shopMain">
+				<nav class="shop">
+					<ul>
+						<li id="Items"><span class="text">Items</span><span class="newItem">new</span>
+							<ul>
+								<li class="all">All<span class="newItem">new</span></li>
+								<li id="Materials">Materials<span class="newItem">new</span></li>
+								<li id="Ores">Ores<span class="newItem">new</span></li>
+								<li id="Potions">Potions<span class="newItem">new</span></li>
+							</ul>
+						</li>
+						<li id="Equipment"><span class="text">Equipment</span><span class="newItem">new</span>
+							<ul>
+								<li class="all">All<span class="newItem">new</span></li>
+								<li id="weapons">Weapons<span class="newItem">new</span></li>
+								<li id="tools">Tools<span class="newItem">new</span></li>
+								<li id="armour">Armour<span class="newItem">new</span></li>
+								<li id="molds">Molds<span class="newItem">new</span></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+				<div id="shopTableWrap">
+					<div id="closeShop">Close</div>
+					<table>
+						<thead id="shopHead">
+							
+						</thead>
+						<tbody id="shopTable">
+							
+						</tbody>
+						
+					</table>
+				</div>
+				<div id="shopContent">
+					<div>
+						<div class="description">
+							<div class="title">Description</div>
+							<div id="productD"></div>
+						</div>
+						<span class="img">
+							<img src="img/other/error.png" id="productP">
+						</span>
+						<div class="stats">
+							<div class="title">Stats</div>
+							<div id="productS"></div>
+						</div>
+						<div class="clickables">
+							<div class="quantity">1</div>
+							<div class="slider"></div>
+							<div class="finalCost">
+								<span class="dirak">
+									<img src="img/topBar/Dirak.png">
+									<span id="shopDirak">
+										100
+									</span>
+								</span>
+								<span class="essence">
+									<img src="img/topBar/spiritEssenceSmall.png">
+									<span id="shopEssence">
+										100
+									</span>
+								</span>
+							</div>
+							<div class="purchase">
+								<span id="purchaseButton">
+									Buy
+								</span>
+							</div>
+						</div>
+						<div class="close">&#119987;</div>
+					</div>
+				</div>
+				<div id="shopNotification">
+					<!-- Sorry, you don't have enough Gold! -->
+				</div>
+			</div>
+
+
+			
+	<!-- Training Stats Page -->
+			<div id="traningWindow">
+				<div id='close'>&times;</div>
+			</div>
+
+
+
+				<!-- <div id="storageMain"></div> -->
+				<div id="charStatsMain"></div>
+
+				<div id="activeQuestMain"></div>
+				<!-- <div id="">
+				<div id="Background"></div>
+				<div id="Front"></div>
+			</div> -->
+			</div>
+
+			<div id="optionsScreen">
+					<div id='close'>&times;</div>
+				<div id="optionsWrap">
+					<span id="saveGame" class="box">Save</span>
+					<span id="configuration" class="box">Configuration</span>
+					<span id="statistics" class="box">Statistics</span>
+				</div>
+				<div id="optionsInner">
+					<div id="optionsSave"></div>
+					<div id="optionsConfiguration"></div>
+					<div id="optionsStatistics"></div>
+					<span id="optionPrompt"></span>
+				</div>
+			</div>
+
+
+			<div id="monsterPopupBackground"></div>
+			<div id="monsterPopup" class="disSel">
+				<div class="battleStart">
+					<div class="text">
+						BATTLE
+					</div>
+				</div>
+				<div class="battleEnd">
+					<h1>You are victorious!</h1>
+					<p>Collect your spoils below.</p>
+					<div class="content">
+						<div class="top">
+							<div id="xploot">
+								
+								<fieldset>
+									<legend>Experience</legend>
+									<div class="container">
+										123
+										<!-- Dynamically inserted content -->
+									</div>
+								</fieldset>
+
+							</div>
+							<div id="essenceloot">
+								<fieldset>
+									<legend>Essence</legend>
+									<div class="container">
+										123
+										<!-- Dynamically inserted content -->
+									</div>
+								</fieldset>
+							</div>
+						</div>
+						<div class="bot">
+							<div id="itemloot">
+								<span class="arrowLeft"></span>
+								<fieldset>
+									<legend>Items</legend>
+									<div class="container">
+										
+										<!-- Dynamically inserted content -->
+									</div>
+								</fieldset>
+								<span class="arrowRight"></span>
+							</div>
+						</div>
+						<div id="lootclose">Take All</div>
+					</div>
+				</div>		
+			</div>
+
+
+
+	<!-- mainWindow  end-->
+		</div>
+
+
+
+	
+
+
+
+<!--::::::::::::::-->
+<!--Sidebar Window-->
+<!--::::::::::::::-->
+	
+	<div id="sideBar">
+		<div id="console">
+			<fieldset>
+				<legend><div>Log</div></legend>
+				<div id="interaction1"></div>
+				<div id="interaction2"></div>
+			</fieldset>
+		</div>
+	</div>
+
+
+	<!-- Whats The time? -->
+
+	<div id="wrap1">
+		<div id="clock">
+			<div id="insertTime"></div>	
+		</div>
+	</div>
+
+
+
+
+<!--::::::::::-->
+<!--Status Bar-->
+<!--::::::::::-->
+
+		<div id="statusBar">
+			<div id="normalStatus">
+	<!-- Health/Magic/XP Bars -->
+				<div id="bars">
+					<span id="health">
+						<span class="text">
+							Health:
+						</span>
+						<div id="healthBar">
+							<div id="healthPercent"></div>
+							<div id="healthContent"></div>
+						</div>
+						<div id="healthChange" class=""></div>
+					</span>
+				<br/>
+					<span id="mp">
+						<span class="text">Mana:</span>
+						<div id="manaBar">
+							<div id="manaPercent"></div>
+							<div id="manaContent"></div>
+						</div>
+						<div id="manaChange" class=""></div>
+					</span>
+				</div>
+
+	<!--Everything else-->
+				
+
+				<div id="divide"></div>
+
+
+				<!-- put this on the top of the screen next to money  -->
+				<!-- <span id="sQuest" class="tri">Quests</span> -->
+
+		<!-- Embedded Wrap -->
+				<div id="statusBoxesWrap">
+					<span id="sEmbedded"></span>
+		<!-- Embedded pages -->
+			<!-- Mini Inventory -->
+					<span class="inv">
+						<div id="miniInventory">
+							<table id="tableInventory">
+								<tr id="inventoryTD">
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</table>
+						</div>
+					</span>
+		<!-- Mini Equipment -->
+					<span class="equ">
+						<div id="miniEquipment">
+
+							<table class="table1">
+								<tr>
+									<td class="allBorder">
+										<img src="img/other/weaponEmpty.png" class="hoverText empty" id="weaponImg">
+										<span class="durabilityBarWrap">
+											<span class="durabilityBar weapon"></span>
+										</span>			
+									</td>
+									<td class="allBorder">
+										<img src="img/other/toolsEmpty.png" class="hoverText empty" id="toolImg">
+										<span class="durabilityBarWrap">
+											<span class="durabilityBar tools"></span>
+										</span>			
+									</td>
+									<td class="allBorder">
+										<img src="img/other/armourEmpty.png" class="hoverText empty" id="armourImg">
+										<span class="durabilityBarWrap">
+											<span class="durabilityBar armour"></span>
+										</span>			
+									</td>
+									<td class="allBorder">
+										<img src="img/other/specialEmpty.png" class="hoverText empty" id="specialImg">
+										<span class="durabilityBarWrap">
+											<span class="durabilityBar special"></span>
+										</span>			
+									</td>
+								</tr>
+							</table>
+							<table class="table2">
+								<tr>
+									
+									
+									
+									
+								</tr>
+							</table>
+						</div>
+						
+					</span>
+		<!-- Mini Quest Goes Here -->
+
+
+		<!-- Notification -->
+					<div id="statusSelectionMessage">
+						<span class="message">
+
+						</span>
+					</div>
+
+
+
+
+
+			<!-- status selection -->
+					<div id="selectionMenu">
+						<div id="invText">
+							<img src="img/other/inventory.png">
+						</div>
+						<div id="menuParent">
+							<div>
+							<!-- empty div to have a margin on the top -->
+								<span>&nbsp;</span>
+								<div id="selectionUse" class="unmarked">Use</div>
+								<div id="selectionEquip" class="unmarked">Equip</div>
+								<div id="selectionUnequip" class="unmarked">Unequip</div>
+								<div id="selectionThrow" class="unmarked">Throw Away</div>
+								<div id="selectionOrganise" class="unmarked">Organise</div>
+								<div id="selectionEnlarge" class="unmarked">Fullscreen</div>
+								<span>&nbsp;</span>
+							</div>
+						</div>
+						<div id="equText">
+							<img src="img/other/equipment.png">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>		
+
+
+<!--::::-->
+<!--Misc-->
+<!--::::-->
+
+	<div id="popupBackground"></div>
+	<div id="popup"></div>
+
+	
+
+
+	<div id="welcomeBackground" class="disSel"> <!-- background -->
+		<div id="para"> 
+			<div id="px"></div>		
+		</div>
+	</div>
+
+
+	<div id="welcomeInner"> <!-- inner box --> 
+		<span id="welcomeText"> <!-- User greeting -->
+			
+		</span>
+		<span id="welcomePromptWrap">
+			<div id="welcomePrompt"></div>	
+			<div id="welcomePrompt2"></div>
+			<input id='playerName' type='text' placeholder='My name is...'> 
+			<span id='nameConfirm'>Are you sure?</span>
+			<div id="inputPos">
+				<!-- on hover over start, 'welcome, adam'  -->
+			</div>
+		</span>
+		<div id="welcomeBoxes">
+			<span id="loadGame" class="welcomeBox">Load Game</span>
+			<span id="newGame" class="welcomeBox">New Game</span>
+			<span id="continueGame" class="welcomeBox">Continue</span>
+		</div>
+		<div id="charCreateWrap">	
+			<span id="charCreate" class="welcomeBox">
+				I'm <span id="copyInput"> ... </span>
+			</span>
+		</div>
+	</div>
+		
+		
+	<div id="charCreationPage" class="disSel">
+		<div class="innerWrap">
+			<div class="fadeIn1"></div>
+			<div class="charClasses">
+				<span>
+					<div id="charWarrior">
+						Warrior				
+					</div>
+				</span>
+				<span>
+					<div id="charMage">
+						Mage
+					</div>
+				</span>
+				<span>
+					<div id="charThief">
+						Thief
+					</div>
+				</span>
+				<span>
+					<div id="charHarvester">
+						Harvester
+					</div>
+				</span>
+			</div>
+			<div id="charClasses">
+				<table>
+					<thead>
+						<tr>
+							<td id="charName" class="insertClass">
+								<!-- eg "Warrior" -->
+							</td>
+						</tr>
+					</thead>
+					<tbody id="charStats">
+						<tr>
+							<td>Physical Strength</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Magic Power</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Physical Defence</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Magic Guard</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Agility</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Luck</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Endurance</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Intellect</td>
+							<td></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td id="charFooter"></td>
+						</tr>
+					</tfoot>
+				</table>
+
+				<div id="charButtonWrap">
+					<div class="text">
+						Do you want to become a 
+							<span class="insertClass"></span>
+						?
+					</div>
+					<span id="charYes"><div>
+						Yes!
+					</div></span>
+					<span id="charNo">
+						<div>
+							No...		
+						</div>
+					</span>
+				</div>
+				<!-- Info for the class selected is displayed here -->
+			</div>	
+
+			<div id="finalisationWrap"><span id="skipFinal">Skip Monologue...</span>
+				<!-- Storyline goes in here -->
+			</div>	
+			<div id="fConvCent">
+				
+			</div>	
+		</div>
+	</div>
+	<!-- Level Up -->
+	<div id="levelUpWrapper" class="disSel">
+	</div>
+	<div id="levelUpScreen" class="disSel">
+		<div class="screen1">
+			<div class="levelUpHeader">Level Up!</div>
+			<div id="leveltext">
+				You are now Level <span class="level"></span>
+			</div>
+			<div id="levelStats">
+				<div>
+					+20 Health
+				</div>
+				<div>
+					+8 Mana
+				</div>
+				<div>
+					+3 Skill Points
+				</div>
+			</div>
+		</div>
+		<span id="lvlbutton">Next</span>
+
+		<div class="screen2">
+			<div id="header">
+				Unlocked!
+			</div>
+			<div class="notif">
+				<div class="newQuest">There are new quests in the village! <span class="newQuestImg"></span></div>
+				<div class="newSkill">You have learnt a new battle skill! <span class="mewSkillImg"></span></div> <!-- add color of class type to newskillname -->
+				<div class="newShopitems">There are new items in the shop! <span class="newShopImg"></span> </div>
+			</div>
+		</div>
+
+	</div>
+
+
+	<div id="dot"></div>
+	<div id="square"></div>
+	<script type="text/javascript" src="scripts/obj.js"></script>
+	<script type="text/javascript" src="scripts/homeScript.js"></script>
+	<script type="text/javascript" src="scripts/craft.js"></script>
+	<script type="text/javascript" src="scripts/$ready.js"></script>
+	<script type="text/javascript" src="scripts/pre.js"></script>
+	<script type="text/javascript" src="scripts/tables.js"></script>
+	<script type="text/javascript" src="scripts/shop.js"></script>
+	<script type="text/javascript" src="scripts/battle.js"></script>
+	<script type="text/javascript" src="scripts/testButtons.js"></script>
+	<script type="text/javascript" src="scripts/toolBar.js"></script>
+	<script type="text/javascript" src="scripts/main.js"></script>
+</body>
+
+
+
+
+
+
+
+
+
+</html>
